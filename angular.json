@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "registration-cui"
+    }
+  },
+  "defaultProject": "registration-cui",
+  "cli": {
+    "analytics": false
+  }
 }

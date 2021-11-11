@@ -1,0 +1,35 @@
+<div id="okInfo" [hidden]='!okInfo'>
+  <h1>{{ okInfo }}</h1>
+</div>
+
+<form [hidden]='!!okInfo'>
+  <h1>Zmiana danych</h1>
+
+  <label for="username">Nazwa Użytkownika:</label>
+  <h6 *ngIf="usernameViolation">{{ usernameViolation }}</h6>
+  <h6 *ngIf="usernameAlreadyExsistInfo">{{ usernameAlreadyExsistInfo }}</h6>
+  <input type="text" [(ngModel)]="modifiedUser.username" name="username" id="username">
+
+  <label for="name">Imię:</label>
+  <h6 *ngIf="nameViolation">{{ nameViolation }}</h6>
+  <input type="text" [(ngModel)]="modifiedUser.name" name="name" id="name">
+
+  <label for="surname">Nazwisko:</label>
+  <h6 *ngIf="surnameViolation">{{ surnameViolation }}</h6>
+  <input type="text" [(ngModel)]="modifiedUser.surname" name="surname" id="surname">
+
+  <label for="email">e-mail:</label>
+  <h6 *ngIf="emailViolation">{{ emailViolation }}</h6>
+  <input type="text" [(ngModel)]="modifiedUser.email" name="email" id="email">
+
+  <label for="password">Hasło:</label>
+  <h6 *ngIf="passwordViolation">{{ passwordViolation }}</h6>
+  <input type="password" [(ngModel)]="modifiedUser.newPassword" name="password" id="password">
+
+  <label for="password2">Stare hasło:</label>
+  <h6 *ngIf="badPasswordInfo">{{ badPasswordInfo }}</h6>
+  <input type="password" [(ngModel)]="modifiedUser.oldPassword" name="password2" id="password2">
+
+  <button (click)="updateUser()">Aktualizuj</button>
+
+</form>

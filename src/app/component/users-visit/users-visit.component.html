@@ -1,0 +1,28 @@
+<ng-container *ngIf="visit; then showResult; else showError"></ng-container>
+
+<ng-template #showResult>
+  <div id="singleElement">
+    <div class="partOf">
+      <h4>{{ visit.institution.institutionName }}</h4>
+      <h4>ul. {{ visit.institution.street }} {{ visit.institution.gateNumber }} <span *ngIf="!!visit.institution.premisesNumber">/ {{ visit.institution.premisesNumber }}</span></h4>
+      <h4>{{ visit.institution.city }}</h4>
+    </div>
+
+    <div class="partOf">
+      <h4>{{ visit.representative.name }} {{ visit.representative.surname }}</h4>
+      <h4>{{ visit.representative.email }}</h4>
+      <h4>{{ visit.placeName }}</h4>
+    </div>
+
+    <div class="partOf">
+      <h4>{{ visit.visitStart | date:"dd.MM.yyyy"}}r. - {{ visit.visitStart | date:"HH:mm" }} - {{ visit.visitEnd | date:"HH:mm" }}</h4>
+      <button (click)="cancelVisit(visit._links.visit.href)">zrezygnuj</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

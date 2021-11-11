@@ -1,0 +1,30 @@
+<ng-container *ngIf="places; then showPanel; else showError"></ng-container>
+
+<ng-template #showPanel>
+  <div id="representativesPanel">
+    <div id="container">
+      <div class="el">
+        <form>
+          <h4>Stwórz nowe stanowisko:</h4>
+          <label for="placeName">Nazwa stanowiska:</label>
+          <h5 *ngIf="placeNameViolation">{{ placeNameViolation }}</h5>
+          <h5 *ngIf="placeNameError">{{ placeNameError }}</h5>
+          <input type="text" [(ngModel)]="creatingPlace.placeName" name="placeName" id="placeName">
+          <button (click)='createPlace()'>ok</button>
+        </form>
+      </div>
+      <div class="el" *ngFor="let place of places">
+        <h4>{{ place.placeName }}</h4>
+        <h5 *ngIf="deletePlaceErrorResponse && deletePlaceErrorResponse.placeName === place.placeName">{{ deletePlaceErrorResponse.message }}</h5>
+        <button (click)='delete(place.links[0].href)'>usuń {{ place.placeName }}</button>
+      </div>
+    </div>
+    <app-nav-bar-work-place></app-nav-bar-work-place>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

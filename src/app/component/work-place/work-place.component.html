@@ -1,0 +1,20 @@
+<ng-container *ngIf="workPlace; then showPanel; else showError"></ng-container>
+
+<ng-template #showPanel>
+  <div id="representativesPanel">
+    <div id="container">
+      <h3>{{ workPlace.institutionName }}</h3>
+      <h4>ul. {{ workPlace.street }} {{ workPlace.gateNumber }} <span *ngIf="workPlace.premisesNumber">/ {{ workPlace.premisesNumber }}</span></h4>
+      <h4>{{ workPlace.city }} województwo {{ workPlace.province }}</h4>
+      <h4>Rodzaj usług: {{ workPlace.typeOfService }}</h4>
+      <p>{{ workPlace.description }}</p>
+    </div>
+    <app-nav-bar-work-place></app-nav-bar-work-place>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

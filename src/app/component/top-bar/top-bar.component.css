@@ -1,0 +1,26 @@
+#topBar{
+  text-align: center;
+  background-color: darkcyan;
+  color: blueviolet;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  flex-grow: 1;
+}
+
+button {
+  background: none;
+  border: 2px solid blueviolet;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: blueviolet;
+}

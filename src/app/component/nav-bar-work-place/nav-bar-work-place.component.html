@@ -1,0 +1,62 @@
+<div class="navBar" *ngIf="workPlace && navBarWorkPlaceVisible">
+  <h4>{{ workPlace.institutionName }}</h4>
+  <ul>
+    <li>
+      <button (click)='navigateTo(workPlace._links.places.href)'>stanowiska</button>
+    </li>
+    <li>
+      <button (click)='navigateTo(workPlace._links.representatives.href)'>pracownicy</button>
+    </li>
+    <li>
+      <form>
+        <div class="formContainer">
+          <div class="inputBox">
+            <label for="year">Rok:</label>
+            <input type="number" [(ngModel)]="yearMonth.year" name="year" id="year">
+          </div>
+          <div class="inputBox">
+            <label for="month">Miesiąc:</label>
+            <input type="number" [(ngModel)]="yearMonth.month" name="month" id="month">
+          </div>
+        </div>
+
+        <button (click)='getTimetableTemplate()'>szablon {{yearMonth.year}}-{{yearMonth.month}}</button>
+      </form>
+    </li>
+    <li>
+      <button (click)='navigateTo(workPlace._links.getNextTemplate.href)'>szablon następnego miesiąca</button>
+    </li>
+    <li>
+      <button (click)='navigateTo(workPlace._links.currentYear.href)'>kalendarz bierzący rok</button></li>
+    <li>
+      <button (click)='navigateTo(workPlace._links.currentMonth.href)'>kalendarz bierzący miesiąc</button>
+    </li>
+    <li>
+      <button (click)='navigateTo(workPlace._links.currentDay.href)'>kalendarz bierzący dzień</button>
+    </li>
+    <li>
+      <form>
+        <div class="formContainer">
+          <div class="inputBox">
+            <label for="year">Rok:</label>
+            <input type="number" [(ngModel)]="yearMonthDay.year" name="year" id="year">
+          </div>
+          <div class="inputBox">
+            <label for="month">Miesiąc:</label>
+            <input type="number" [(ngModel)]="yearMonthDay.month" name="month" id="month">
+          </div>
+          <div class="inputBox">
+            <label for="day">Dzień:</label>
+            <input type="number" [(ngModel)]="yearMonthDay.day" name="day" id="day">
+          </div>
+        </div>
+
+        <button (click)='showTimetable()'>Znajdź w kalendarzu</button>
+      </form>
+    </li>
+  </ul>
+</div>
+<button id="showHideButton" (click)='showOrHide(!navBarWorkPlaceVisible)'>
+  <span *ngIf="navBarWorkPlaceVisible">&gt;</span>
+  <span *ngIf="!navBarWorkPlaceVisible">&lt;</span>
+</button>

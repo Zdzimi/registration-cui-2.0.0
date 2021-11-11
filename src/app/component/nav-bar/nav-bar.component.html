@@ -1,0 +1,48 @@
+<div class="navBar">
+  <h4 *ngIf="user">{{ user.username }}</h4>
+  <ul>
+    <li>
+      <button (click)='clickAdvancedSearching()'>zaawansowane wyszukiwanie</button>
+
+      <form *ngIf='advancedSearchingVisible'>
+        <label for="institutionName">Nazwa placówki</label>
+        <input type="text" [(ngModel)]="searchObject.institutionName" name="institutionName" id="institutionName">
+
+        <label for="province">Województwo</label>
+        <input type="text" [(ngModel)]="searchObject.province" name="province" id="province">
+
+        <label for="city">Miasto</label>
+        <input type="text" [(ngModel)]="searchObject.city" name="city" id="city">
+
+        <label for="typeOfService">Rodzaj usług</label>
+        <input type="text" [(ngModel)]="searchObject.typeOfService" name="typeOfService" id="typeOfService">
+
+        <button (click)='navigateToInstitutions(user._links.searchBy.href)'>szukaj</button>
+
+      </form>
+    </li>
+    <li>
+      <button (click)='navigateTo(user._links.allInstitutions.href)'>wszystkie placówki</button>
+    </li>
+    <li>
+      <button (click)='navigateTo(user._links.recognizedInstitutions.href)'>znane placówki</button>
+    </li>
+    <li>
+      <button (click)='navigateTo(user._links.visits.href)'>Twoje wizyty</button>
+    </li>
+    <li>
+      <button (click)='showYourWorkPlaces()'>Twoje placówki</button>
+      <ul [hidden]='workPlacesHidden'>
+        <li *ngFor="let workPlace of workPlaces">
+          <button (click)='navigateTo(workPlace.links[0].href)'>{{ workPlace.institutionName }}</button>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button (click)='navigateTo(user._links.createWorkPlace.href)'>Dodaj placówkę</button>
+    </li>
+    <li>
+      <button (click)='navigateTo(user._links.updateUser.href)'>Zmień swoje dane</button>
+    </li>
+  </ul>
+</div>

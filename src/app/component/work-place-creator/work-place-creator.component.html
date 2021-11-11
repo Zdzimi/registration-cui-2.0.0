@@ -1,0 +1,38 @@
+<form>
+  <h1>Stwórz placówkę</h1>
+
+  <label for="institutionName">Nazwa Placówki:</label>
+  <h6 [hidden]='!institutionNameAlreadyExistsInfo'>{{ institutionNameAlreadyExistsInfo }}</h6>
+  <h6 [hidden]='!institutionNameViolation'>{{ institutionNameViolation }}</h6>
+  <input type="text" [(ngModel)]="creatingWorkPlace.institutionName" name="institutionName" id="institutionName">
+
+  <label for="province">Województwo:</label>
+  <h6 [hidden]='!provinceViolation'>{{ provinceViolation }}</h6>
+  <input type="text" [(ngModel)]="creatingWorkPlace.province" name="province" id="province">
+
+  <label for="city">Miasto:</label>
+  <h6 [hidden]='!cityViolation'>{{ cityViolation }}</h6>
+  <input type="text" [(ngModel)]="creatingWorkPlace.city" name="city" id="city">
+
+  <label for="street">Ulica:</label>
+  <h6 [hidden]='!streetViolation'>{{ streetViolation }}</h6>
+  <input type="text" [(ngModel)]="creatingWorkPlace.street" name="street" id="street">
+
+  <label for="gateNumber">Numer budynku:</label>
+  <h6 [hidden]='!gateNumberViolation'>{{ gateNumberViolation }}</h6>
+  <input type="text" [(ngModel)]="creatingWorkPlace.gateNumber" name="gateNumber" id="gateNumber">
+
+  <label for="premisesNumber">Numer lokalu:</label>
+  <input type="text" [(ngModel)]="creatingWorkPlace.premisesNumber" name="premisesNumber" id="premisesNumber">
+
+  <label for="typeOfService">Rodzaj usłóg:</label>
+  <h6 [hidden]='!typeOfServiceViolation'>{{ typeOfServiceViolation }}</h6>
+  <input type="text" [(ngModel)]="creatingWorkPlace.typeOfService" name="typeOfService" id="typeOfService">
+
+  <label for="description">Opis:</label>
+  <h6 [hidden]='!descriptionViolation'>{{ descriptionViolation }}</h6>
+  <input type="text" [(ngModel)]="creatingWorkPlace.description" name="description" id="description">
+
+  <button (click)="createWorkPlace()">Gotowe</button>
+
+</form>

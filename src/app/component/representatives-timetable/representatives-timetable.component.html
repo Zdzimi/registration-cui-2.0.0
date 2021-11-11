@@ -1,0 +1,44 @@
+<ng-container *ngIf="monthTimetables.length !== 0; then showTimetable; else showError"></ng-container>
+
+<ng-template #showTimetable>
+  <div class="month" *ngFor="let monthTimetable of monthTimetables">
+    <div class="monthName"><h2>{{ monthTimetable.year }} - {{ monthTimetable.month }}</h2></div>
+    <div class="dayName"><h3>pn</h3></div>
+    <div class="dayName"><h3>wt</h3></div>
+    <div class="dayName"><h3>śr</h3></div>
+    <div class="dayName"><h3>czw</h3></div>
+    <div class="dayName"><h3>pt</h3></div>
+    <div class="dayName"><h3>sb</h3></div>
+    <div class="dayName"><h3>nd</h3></div>
+    <div class="dayEmpty" *ngFor="let emptyDay of monthTimetable.emptyDaysBefore"></div>
+    <div class="day" *ngFor="let dayTimetable of monthTimetable.dayTimetables">
+      <h3>{{ dayTimetable.dayOfMonth }}</h3>
+      <div *ngFor="let visit of dayTimetable.visits">
+        <h5 *ngFor="let link of visit.links">
+          <a [routerLink]="modifyLink(link.href)">{{ link.rel | date:"HH:mm" }}</a>
+        </h5>
+      </div>
+    </div>
+    <div class="dayEmpty" *ngFor="let emptyDay of monthTimetable.emptyDaysAfter"></div>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+
+  <ng-container *ngIf="error; then error404; else errorEmptyTimetable"></ng-container>
+
+  <ng-template #error404>
+    <div id="errorInfo">
+      <h4>{{ error }}</h4>
+    </div>
+  </ng-template>
+
+  <ng-template #errorEmptyTimetable>
+    <div id="errorInfo">
+      <h4>Brak kalendarza.</h4>
+    </div>
+  </ng-template>
+
+</ng-template>
+
+

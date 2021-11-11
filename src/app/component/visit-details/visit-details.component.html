@@ -1,0 +1,45 @@
+<ng-container *ngIf="visit; then showPanel; else showError"></ng-container>
+
+<ng-template #showPanel>
+  <div id="representativesPanel">
+    <div id="container">
+
+      <ng-container *ngIf="deletingError; then showDeletingError; else showVisit"></ng-container>
+
+      <ng-template #showDeletingError>
+        <div id="errorInfo">
+          <h4>{{ deletingError }}</h4>
+        </div>
+      </ng-template>
+
+      <ng-template #showVisit>
+        <div id="singleElement">
+          <div class="partOf">
+            <h4>{{ visit.institution.institutionName }}</h4>
+            <h4>ul. {{ visit.institution.street }} {{ visit.institution.gateNumber }} <span *ngIf="!!visit.institution.premisesNumber">/ {{ visit.institution.premisesNumber }}</span></h4>
+            <h4>{{ visit.institution.city }}</h4>
+          </div>
+
+          <div class="partOf">
+            <h4 *ngIf="visit.user">{{ visit.user.name }} {{ visit.user.surname }}</h4>
+            <h4 *ngIf="visit.user">{{ visit.user.email }}</h4>
+            <h4>{{ visit.placeName }}</h4>
+          </div>
+
+          <div class="partOf">
+            <h4>{{ visit.visitStart | date:"dd.MM.yyyy"}}r. - {{ visit.visitStart | date:"HH:mm" }} - {{ visit.visitEnd | date:"HH:mm" }}</h4>
+            <button *ngIf="!visit.user" (click)="deleteVisit(visit._links.visit.href)">usuń</button>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+    <app-nav-bar-work-place></app-nav-bar-work-place>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

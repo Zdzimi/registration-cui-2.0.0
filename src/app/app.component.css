@@ -1,0 +1,11 @@
+#topBar {
+  width: 100%;
+}
+
+#body {
+  display: flex;
+}
+
+#cont {
+  flex-grow: 1;
+}
