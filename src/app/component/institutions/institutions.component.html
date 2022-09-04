@@ -1,0 +1,20 @@
+<ng-container *ngIf="institutions.length !== 0; then institutionsList; else noResultInfo;"></ng-container>
+
+<ng-template #institutionsList>
+  <div class="elementOfList" *ngFor="let institution of institutions">
+    <h3 *ngFor="let link of institution.links">
+      <a [routerLink]="modifyLink(link.href)">{{ link.rel }}</a>
+    </h3>
+    <p>
+      {{ institution.description }}
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #noResultInfo>
+  <div id="errorInfo">
+    <h4>Brak wyników wyszukiwania.</h4>
+  </div>
+</ng-template>
+
+

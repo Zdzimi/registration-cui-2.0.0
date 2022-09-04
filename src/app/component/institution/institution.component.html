@@ -1,0 +1,18 @@
+<ng-container *ngIf="institution; then showInstitution; else showError;"></ng-container>
+
+<ng-template #showInstitution>
+  <div id="element">
+    <h3>{{ institution.institutionName }}</h3>
+    <h4>ul. {{ institution.street }} {{ institution.gateNumber }} <span *ngIf="institution.premisesNumber">/ {{ institution.premisesNumber }}</span></h4>
+    <h4>{{ institution.city }} województwo {{ institution.province }}</h4>
+    <h4>Rodzaj usług: {{ institution.typeOfService }}</h4>
+    <p>{{ institution.description }}</p>
+    <a [routerLink]="modifyLink(institution._links.representatives.href)">umów się z jednym z naszych przedstawicieli</a>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

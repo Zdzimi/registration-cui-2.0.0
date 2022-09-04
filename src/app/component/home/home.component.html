@@ -1,0 +1,46 @@
+<ng-container *ngIf="loginView; then loginForm; else registryForm"></ng-container>
+
+<ng-template #loginForm>
+  <form class="box">
+    <h1>Zaloguj</h1>
+    <h5 *ngIf="errorLogin">{{ errorLogin }}</h5>
+    <label for="cUsername">Nazwa użytkownika:</label>
+    <input type="text" [(ngModel)]="credentials.username" name="username" id="cUsername">
+
+    <label for="cPassword">Hasło:</label>
+    <input type="password" [(ngModel)]="credentials.password" name="password" id="cPassword">
+
+    <button class="bOk" (click)="login()">Zaloguj</button>
+    <button class="bLink" (click)="showRegistry()">Utwórz konto</button>
+  </form>
+</ng-template>
+
+<ng-template #registryForm>
+  <form class="box">
+    <h1>Nowe konto</h1>
+
+    <label for="username">Nazwa użytkownika:</label>
+    <h6 *ngIf="errorRegistry">{{ errorRegistry }}</h6>
+    <h6 *ngIf="usernameViolation">{{ usernameViolation }}</h6>
+    <input type="text" [(ngModel)]="addingUser.username" name="username" id="username">
+
+    <label for="name">Imię:</label>
+    <h6 *ngIf="nameViolation">{{ nameViolation }}</h6>
+    <input type="text" [(ngModel)]="addingUser.name" name="name" id="name">
+
+    <label for="surname">Nazwisko:</label>
+    <h6 *ngIf="surnameViolation">{{ surnameViolation }}</h6>
+    <input type="text" [(ngModel)]="addingUser.surname" name="surname" id="surname">
+
+    <label for="email">e-mail:</label>
+    <h6 *ngIf="emailViolation">{{ emailViolation }}</h6>
+    <input type="text" [(ngModel)]="addingUser.email" name="email" id="email">
+
+    <label for="password">Hasło:</label>
+    <h6 *ngIf="passwordViolation">{{ passwordViolation }}</h6>
+    <input type="password" [(ngModel)]="addingUser.password" name="password" id="password">
+
+    <button class="bOk" (click)="registry()">Utwórz konto</button>
+    <button class="bLink" (click)="showLogin()">Zaloguj</button>
+  </form>
+</ng-template>

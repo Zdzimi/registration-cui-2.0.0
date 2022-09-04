@@ -1,0 +1,177 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: cadetblue;
+  text-align: center;
+}
+
+.elementOfList,
+#element,
+#errorInfo,
+.errorInfo {
+  width: 50%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 40px;
+  background-color: darkcyan;
+  text-align: center;
+  border-radius: 24px;
+}
+
+.elementOfList h3,
+#element h3,
+#errorInfo h4 {
+  letter-spacing: 3px;
+}
+
+.elementOfList a,
+#element a,
+#errorInfo a,
+#singleElement a {
+  display: block;
+  margin: 10px;
+  letter-spacing: 3px;
+  color: blueviolet;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.elementOfList a:hover,
+#element a:hover,
+#errorInfo a:hover,
+#singleElement a:hover {
+  color: black;
+}
+
+#singleElement {
+  padding: 40px auto;
+}
+
+#singleElement .partOf {
+  margin: 30px;
+}
+
+#singleElement h4 {
+  margin: 15px auto;
+  letter-spacing: 2px;
+}
+
+#singleElement button {
+  background: none;
+  display: block;
+  margin: 10px auto;
+  border: 2px solid blueviolet;
+  padding: 5px 20px;
+  outline: none;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+#singleElement button:hover{
+  background: blueviolet;
+}
+
+.navBar {
+  padding: 15px;
+  width: 25vw;
+  background-color: darkcyan;
+}
+
+.navBar ul > li {
+  list-style-type: none;
+}
+
+.navBar button {
+  letter-spacing: 2px;
+  width: 90%;
+  background: none;
+  margin: 2px auto;
+  border: 2px solid blueviolet;
+  padding: 5px 20px;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.navBar button:hover {
+  background: blueviolet;
+}
+
+.navBar form {
+  margin: 10px auto;
+}
+
+.navBar h4 {
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.navBar input {
+  background: none;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  border: 2px solid blueviolet;
+  padding: 5px 6px;
+  width: 70%;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#representativesPanel {
+  position: relative;
+  display: flex;
+}
+
+#container {
+  flex-grow: 1;
+}
+
+.el {
+  width: 60%;
+  background-color: darkcyan;
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.el h4 {
+  letter-spacing: 2px;
+}
+
+.el h5 {
+  color: red;
+  letter-spacing: 2px;
+}
+
+.el form input {
+  background: none;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  border: 2px solid blueviolet;
+  padding: 5px 6px;
+  width: 200px;
+  outline: none;
+  border-radius: 24px;
+}
+
+.el button {
+  background: none;
+  display: block;
+  margin: 10px auto;
+  border: 2px solid blueviolet;
+  padding: 5px 20px;
+  outline: none;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+.el button:hover{
+  background: blueviolet;
+}
+

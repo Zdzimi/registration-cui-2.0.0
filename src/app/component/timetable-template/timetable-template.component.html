@@ -1,0 +1,96 @@
+<ng-container *ngIf="timetableTemplate || badRequestError; then showPanel; else showError"></ng-container>
+
+<ng-template #showPanel>
+  <div id="representativesPanel">
+    <div id="container">
+
+      <ng-container *ngIf="badRequestError; then showBadRequestError; else showTemplate"></ng-container>
+
+      <ng-template #showBadRequestError>
+        <div id="errorInfo">
+          <h4>{{ badRequestError }}</h4>
+        </div>
+      </ng-template>
+
+      <ng-template #showTemplate>
+
+        <ng-container *ngIf="conflicts.length === 0; then showForm; else showConflicts"></ng-container>
+
+        <ng-template #showForm>
+          <form>
+
+            <h1>{{ timetableTemplate.month }} - {{ timetableTemplate.year }}</h1>
+
+            <div id="callendarBox">
+              <div class="day">
+                <h4>pn</h4>
+              </div>
+              <div class="day">
+                <h4>wt</h4>
+              </div>
+              <div class="day">
+                <h4>śr</h4>
+              </div>
+              <div class="day">
+                <h4>czw</h4>
+              </div>
+              <div class="day">
+                <h4>pt</h4>
+              </div>
+              <div class="day">
+                <h4>sob</h4>
+              </div>
+              <div class="day">
+                <h4>nd</h4>
+              </div>
+              <div class="emptyDay" *ngFor="let el of emptyDaysBefore"></div>
+
+              <div class="day" *ngFor="let day of timetableTemplate.days">
+
+                <h4>{{ day.dayOfMonth }}</h4>
+
+                <label for="timeStart{{ day.dayOfMonth }}">Początek:</label>
+                <input [(ngModel)]="day.workStart" type="time" id="timeStart{{ day.dayOfMonth }}" name="timeStart">
+
+                <label for="timeEnd{{ day.dayOfMonth }}">Koniec:</label>
+                <input [(ngModel)]="day.workEnd" type="time" id="timeEnd{{ day.dayOfMonth }}" name="timeEnd">
+
+                <label for="placeName{{ day.dayOfMonth }}">Stanowisko:</label>
+
+                <select [(ngModel)]="day.placeName" name="placeName" id="placeName{{ day.dayOfMonth }}">
+                  <option *ngFor="let place of timetableTemplate.places" value="{{ place.placeName }}">{{ place.placeName }}</option>
+                </select>
+              </div>
+
+              <div class="emptyDay" *ngFor="let el of emptyDaysAfter"></div>
+            </div>
+
+            <div id="visitTime">
+              <label for="visitTime">Czas Wizyty:</label>
+              <input [(ngModel)]="timetableTemplate.visitLength" type="number" id="visitTime" name="visitTime">
+            </div>
+
+            <button (click)="sendTemplate()">Zapisz</button>
+          </form>
+        </ng-template>
+
+        <ng-template #showConflicts>
+          <div class="errorInfo" *ngFor="let conflict of conflicts">
+            <h4>{{ conflict }}</h4>
+          </div>
+          <button (click)="tryAgain()">Spróbuj ponownie</button>
+        </ng-template>
+
+      </ng-template>
+
+    </div>
+    <app-nav-bar-work-place></app-nav-bar-work-place>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>
+

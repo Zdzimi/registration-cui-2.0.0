@@ -1,0 +1,31 @@
+#showHideButton {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 2px;
+  right: 30px;
+  letter-spacing: 2px;
+  background: none;
+  border: 2px solid blueviolet;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#showHideButton:hover {
+  background: blueviolet;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.inputBox {
+  width: 33%;
+}
+
+.inputBox input {
+  width: 50%;
+}
+

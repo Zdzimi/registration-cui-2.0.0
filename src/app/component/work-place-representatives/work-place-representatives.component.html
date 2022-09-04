@@ -1,0 +1,29 @@
+<ng-container *ngIf="representatives; then showPanel; else showError"></ng-container>
+
+<ng-template #showPanel>
+  <div id="representativesPanel">
+    <div id="container">
+      <div class="el">
+        <form>
+          <h4>Zaproś po nazwie użytkownika:</h4>
+          <label for="invitingRepresentative">Nazwa użytkownika:</label>
+          <h5 *ngIf="inviteError">{{ inviteError }}</h5>
+          <input type="text" [(ngModel)]="invitingRepresentative" name="invitingRepresentative" id="invitingRepresentative">
+          <button (click)='inviteRepresentative()'>ok</button>
+        </form>
+      </div>
+      <div class="el" *ngFor="let representative of representatives">
+        <h4>{{ representative.username }}</h4>
+        <h4>{{ representative.name }} {{ representative.surname }}</h4>
+        <h4>{{ representative.email }}</h4>
+      </div>
+    </div>
+    <app-nav-bar-work-place></app-nav-bar-work-place>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

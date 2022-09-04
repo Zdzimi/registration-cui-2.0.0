@@ -1,0 +1,27 @@
+<ng-container *ngIf="visits.length !== 0; then visitsList; else noResultInfo;"></ng-container>
+
+<ng-template #visitsList>
+  <div class="elementOfList" *ngFor="let visit of visits">
+    <h4>{{ visit.institution.institutionName }}</h4>
+    <h4 *ngFor="let link of visit.links">
+      <a [routerLink]="modifyLink(link.href)">{{ link.rel | date:"dd.MM.yyyyr. - HH:mm"}}</a>
+    </h4>
+  </div>
+</ng-template>
+
+<ng-template #noResultInfo>
+  <div id="errorInfo">
+
+    <ng-container *ngIf="error; then showErrorMessage; else showEmptyListInfo"></ng-container>
+
+    <ng-template #showErrorMessage>
+      <h4>{{ error }}</h4>
+    </ng-template>
+
+    <ng-template #showEmptyListInfo>
+      <h4>Brak wizyt.</h4>
+    </ng-template>
+
+  </div>
+</ng-template>
+

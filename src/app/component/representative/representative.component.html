@@ -1,0 +1,17 @@
+<ng-container *ngIf="representative; then showRepresentative; else showError"></ng-container>
+
+<ng-template #showRepresentative>
+  <div id="element">
+    <h3>{{ representative.username }}</h3>
+    <h4>{{ representative.name }} {{ representative.surname }}</h4>
+    <h4>{{ representative.email }}</h4>
+    <a [routerLink]="modifyLink(representative._links.timetable.href)">zobacz kalendarz</a>
+    <a [routerLink]="modifyLink(representative._links.representatives.href)">powrót do listy przedstawicieli</a>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

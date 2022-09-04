@@ -1,0 +1,28 @@
+<ng-container *ngIf="visit; then showVisit; else showError"></ng-container>
+
+<ng-template #showVisit>
+  <div id="singleElement">
+    <div class="partOf">
+      <h4>{{ visit.institution.institutionName }}</h4>
+      <h4>ul. {{ visit.institution.street }} {{ visit.institution.gateNumber }} <span *ngIf="!!visit.institution.premisesNumber">/ {{ visit.institution.premisesNumber }}</span></h4>
+      <h4>{{ visit.institution.city }}</h4>
+    </div>
+    <div class="partOf">
+      <h4>{{ visit.representative.name }} {{ visit.representative.surname }}</h4>
+      <h4>{{ visit.representative.email }}</h4>
+      <h4>{{ visit.placeName }}</h4>
+    </div>
+    <div class="partOf">
+      <h4>{{ visit.visitStart | date:"dd.MM.yyyy"}}r. - {{ visit.visitStart | date:"HH:mm" }} - {{ visit.visitEnd | date:"HH:mm" }}</h4>
+      <button (click)="bookVisit(visit._links.visit.href)">umawiam wizytę</button></div>
+    <div class="partOf">
+      <a [routerLink]="modifyLink(visit._links.timetable.href)">wróć do kalendarza</a>
+      <a [routerLink]="modifyLink(visit._links.representatives.href)">wróć do listy przedstawicieli</a></div>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

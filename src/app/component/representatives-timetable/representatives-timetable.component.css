@@ -1,0 +1,41 @@
+.month {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.monthName {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.dayName {
+  margin-bottom: 10px;
+  background-color: darkcyan;
+  width: 14%;
+}
+
+.day {
+  margin-bottom: 10px;
+  background-color: darkcyan;
+  width: 14%;
+  min-height: 150px;
+}
+
+.dayEmpty {
+  margin-bottom: 10px;
+  width: 14%;
+}
+
+a {
+  letter-spacing: 2px;
+  color: blueviolet;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: black;
+}

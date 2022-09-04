@@ -1,0 +1,17 @@
+<ng-container *ngIf="representatives; then showResult; else showError"></ng-container>
+
+<ng-template #showResult>
+  <div class="elementOfList" *ngFor="let representative of representatives">
+    <h3 *ngFor="let link of representative.links">
+      <a [routerLink]="modifyLink(link.href)">{{ link.rel }}</a>
+    </h3>
+    <h4>{{ representative.name }} {{ representative.surname }}</h4>
+    <h4>{{ representative.email }}</h4>
+  </div>
+</ng-template>
+
+<ng-template #showError>
+  <div id="errorInfo">
+    <h4>{{ error }}</h4>
+  </div>
+</ng-template>

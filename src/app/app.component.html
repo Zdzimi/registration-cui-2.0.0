@@ -1,0 +1,7 @@
+<app-top-bar id="topBar" [navBarHidden]='navBarHidden' (eventNavBar)='setNavBarHiddenValue($event)'></app-top-bar>
+<div id="body">
+  <app-nav-bar *ngIf="loggedIn && !navBarHidden"></app-nav-bar>
+  <div id="cont">
+    <router-outlet></router-outlet>
+  </div>
+</div>
